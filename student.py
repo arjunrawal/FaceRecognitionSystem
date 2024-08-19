@@ -4,7 +4,7 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 
 class Student:
-    def __init__(self, root):         #using constructor
+    def __init__(self, root):         
         self.root = root
         self.root.geometry("1530x790+0+0")
         self.root.title("Facial Recognition System")
@@ -15,32 +15,39 @@ class Student:
         img1 = img1.resize((500, 130), Image.LANCZOS)
         self.photoimg1 = ImageTk.PhotoImage(img1)
 
+
     #  to display the image in a label
         f_lbl = Label(self.root, image=self.photoimg1)
         f_lbl.place(x=0, y=0, width=500, height=130)
         
+
     # second Loading and resizing the image
         img2 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Student1.jpg")
         img2= img2.resize((500, 130), Image.LANCZOS)
         self.photoimg2 = ImageTk.PhotoImage(img2)
 
+
     # to display the image in a label
         f_lbl = Label(self.root, image=self.photoimg2)
         f_lbl.place(x=500, y=0, width=500, height=130)
         
+
      #third Loading and resizing the image
         img3 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Student1.jpg")
         img3 = img3.resize((600, 130), Image.LANCZOS)
         self.photoimg3 = ImageTk.PhotoImage(img3)
 
+
     # to display the image in a label
         f_lbl = Label(self.root, image=self.photoimg3)
         f_lbl.place(x=1000, y=0, width=600, height=130)
+
 
     #background Loading and resizing the image
         img4 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Background.jpg")
         img4 = img4.resize((1530, 710), Image.LANCZOS)
         self.photoimg4 = ImageTk.PhotoImage(img4)
+
 
     # to display the image in a label
         bg_img = Label(self.root, image=self.photoimg4)
@@ -49,18 +56,22 @@ class Student:
         title_lbl=Label(bg_img,text="STUDENT MANAGEMENT SYSTEM",font=("Roboto",35,"bold"),bg="dark blue",fg="white")
         title_lbl.place(x=0,y=0,width=1530,height=45)
 
+
     #creating frame
         main_frame=Frame(bg_img,bd=2,bg="white")
         main_frame.place(x=20,y=50,width=1480,height=600)
         
+
      #left label frame
         Left_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Student Details",font=("Roboto",12,"bold"))
         Left_frame.place(x=10, y=10, width=760,height=580)
+
 
      #loading and resizing the image in left label
         img_left = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Student4.jpg")
         img_left = img_left.resize((750, 130), Image.LANCZOS)
         self.photoimg_left = ImageTk.PhotoImage(img_left)
+
 
     #to display the image in a left label
         f_lbl = Label(Left_frame, image=self.photoimg_left)
@@ -89,9 +100,11 @@ class Student:
         semester_combo.current(0)
         semester_combo.grid(row=0,column=3,padx=2,pady=10,sticky=W)
 
+
     #Class Student information
         Class_Student_frame=LabelFrame(Left_frame,bd=2,bg="white",relief=RIDGE,text="Class Student Information ",font=("Roboto",13,"bold"),)
         Class_Student_frame.place(x=5, y=220, width=750,height=320)
+
 
     #Student id
         studentId_label=Label(Class_Student_frame,text="Student_ID :",font=("roboto",13,"bold"),bg="white")
@@ -100,12 +113,14 @@ class Student:
         studentId_entry=ttk.Entry(Class_Student_frame,width=20,font=("roboto",13,"bold"))
         studentId_entry.grid(row=0,column=1,padx=10,pady=5,sticky=W)
     
+
     #Student name
         studentName_label=Label(Class_Student_frame,text="Student Name :",font=("roboto",13,"bold"),bg="white")
         studentName_label.grid(row=0,column=2,padx=10,pady=5,sticky=W)
 
         studentName_entry=ttk.Entry(Class_Student_frame,width=20,font=("roboto",13,"bold"))
         studentName_entry.grid(row=0,column=3,padx=10,pady=5,sticky=W)
+
 
     #Student roll no
         roll_no_label=Label(Class_Student_frame,text="Roll No :",font=("roboto",13,"bold"),bg="white")
@@ -114,12 +129,15 @@ class Student:
         roll_no_entry=ttk.Entry(Class_Student_frame,width=20,font=("roboto",13,"bold"))
         roll_no_entry.grid(row=1,column=1,padx=10,pady=5,sticky=W)
 
+
     #Student Date of Birth
         dob_label=Label(Class_Student_frame,text="Date Of Birth :",font=("roboto",13,"bold"),bg="white")
         dob_label.grid(row=1,column=2,padx=10,pady=5,sticky=W)
 
         dob_entry=ttk.Entry(Class_Student_frame,width=20,font=("roboto",13,"bold"))
         dob_entry.grid(row=1,column=3,padx=10,pady=5,sticky=W)
+
+
 
     #Gender Of student
         gender_label=Label(Class_Student_frame,text="Gender :",font=("roboto",13,"bold"),bg="white")
@@ -139,12 +157,14 @@ class Student:
         address_entry=ttk.Entry(Class_Student_frame,width=20,font=("roboto",13,"bold"))
         address_entry.grid(row=2,column=3,padx=10,pady=5,sticky=W)
 
+
     #Contact Number
         contactNo_label=Label(Class_Student_frame,text="Contact :",font=("roboto",13,"bold"),bg="white")
         contactNo_label.grid(row=3,column=0,padx=10,pady=5,sticky=W)
 
         contacNo_entry=ttk.Entry(Class_Student_frame,width=20,font=("roboto",13,"bold"))
         contacNo_entry.grid(row=3,column=1,padx=10,pady=5,sticky=W)
+
 
     #student E-mail:
         email_label=Label(Class_Student_frame,text="E-mail :",font=("roboto",13,"bold"),bg="white")
@@ -153,6 +173,7 @@ class Student:
         email_entry=ttk.Entry(Class_Student_frame,width=20,font=("times new roman",13,"bold"))
         email_entry.grid(row=3,column=3,padx=10,pady=5,sticky=W)
  
+
     #Teacher name:
         teacherName_label=Label(Class_Student_frame,text="Teacher Name :",font=("roboto",13,"bold"),bg="white")
         teacherName_label.grid(row=4, column=0,padx=10, pady=5, sticky=W)
@@ -160,6 +181,7 @@ class Student:
         teacherName_entry=ttk.Entry(Class_Student_frame,width=20,font=("times new roman",13,"bold"))
         teacherName_entry.grid(row=4,column=1,padx=10,pady=5,sticky=W)
     
+
     #Teacher subject name:
         teacher_subject_label=Label(Class_Student_frame,text="Teacher's subject Name :",font=("roboto",13,"bold"),bg="white")
         teacher_subject_label.grid(row=4, column=2,padx=10, pady=5, sticky=W)
@@ -175,33 +197,37 @@ class Student:
         radiobtn2=ttk.Radiobutton(Class_Student_frame,text="No Photo Sample")
         radiobtn2.grid(row=6,padx=5,pady=0,column=1)
 
+
     # Buttons Frame
         btn_frame = Frame(Class_Student_frame, bd=2, relief=RIDGE, bg="white")
         btn_frame.place(x=0, y=200, width=760, height=130)
 
+
     # Row 1Buttons
-        save_btn = Button(btn_frame, text="Save", width=15, font=("times new roman", 13, "bold"), bg="green", fg="white")
+        save_btn = Button(btn_frame, text="Save",cursor="hand2", width=15, font=("times new roman", 13, "bold"), bg="green", fg="white")
         save_btn.grid(row=0, column=0, padx=5, pady=5)
        
-        update_btn = Button(btn_frame, text="Update", width=15, font=("times new roman", 13, "bold"), bg="yellow", fg="black")
+        update_btn = Button(btn_frame, text="Update",cursor="hand2", width=15, font=("times new roman", 13, "bold"), bg="yellow", fg="black")
         update_btn.grid(row=0, column=1, padx=5, pady=5)
        
-        delete_btn = Button(btn_frame, text="Delete", width=15, font=("times new roman", 13, "bold"), bg="red", fg="white")
+        delete_btn = Button(btn_frame, text="Delete",cursor="hand2", width=15, font=("times new roman", 13, "bold"), bg="red", fg="white")
         delete_btn.grid(row=0, column=2, padx=5, pady=5)
        
-        reset_btn = Button(btn_frame, text="Reset", width=15, font=("times new roman", 13, "bold"), bg="blue", fg="white")
+        reset_btn = Button(btn_frame, text="Reset",cursor="hand2", width=15, font=("times new roman", 13, "bold"), bg="blue", fg="white")
         reset_btn.grid(row=0, column=3, padx=5, pady=5)
     
      # Row 2 Buttons
-        take_photo_btn = Button(btn_frame, text="Take Photo Sample", width=20, font=("times new roman", 13, "bold"), bg="blue", fg="white")
+        take_photo_btn = Button(btn_frame, text="Take Photo Sample",cursor="hand2", width=20, font=("times new roman", 13, "bold"), bg="blue", fg="white")
         take_photo_btn.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
        
-        update_photo_btn = Button(btn_frame, text="Update Photo Sample", width=20, font=("times new roman", 13, "bold"), bg="blue", fg="white")
+        update_photo_btn = Button(btn_frame, text="Update Photo Sample",cursor="hand2", width=20, font=("times new roman", 13, "bold"), bg="blue", fg="white")
         update_photo_btn.grid(row=1, column=2, columnspan=2, padx=5, pady=5)
 
 
 
+
 #==========End of left side================
+
 
 
 
@@ -239,19 +265,22 @@ class Student:
         search_entry=ttk.Entry(Search_frame,width=15,font=("times new roman",12,"bold"))
         search_entry.grid(row=0,column=2,padx=10,pady=4,sticky=W)
     
-        search_btn = Button(Search_frame, text="Search", width=12, font=("times new roman", 13, "bold"), bg="blue", fg="white")
+        search_btn = Button(Search_frame, text="Search", cursor="hand2",width=12, font=("times new roman", 13, "bold"), bg="blue", fg="white")
         search_btn.grid(row=0, column=3, padx=4, pady=5)
 
-        showAll_btn = Button(Search_frame, text="Show All", width=12, font=("times new roman", 13, "bold"), bg="green", fg="white")
+        showAll_btn = Button(Search_frame, text="Show All", cursor="hand2", width=12, font=("times new roman", 13, "bold"), bg="green", fg="white")
         showAll_btn.grid(row=0, column=4, padx=4, pady=5)
-        #=========== table frame===========
+
+
+
+    #=========== table frame===========
 
 
         table_frame=LabelFrame(Right_frame,bd=2,bg="white",relief=RIDGE)
         table_frame.place(x=5, y=210, width=680,height=250)
 
 
-        #creating scroll bar
+    #creating scroll bar
 
         scroll_x=ttk.Scrollbar(table_frame,orient=HORIZONTAL)
         scroll_y=ttk.Scrollbar(table_frame,orient=VERTICAL)
@@ -260,10 +289,43 @@ class Student:
 
         scroll_x.pack(side=BOTTOM,fill=X)
         scroll_y.pack(side=RIGHT,fill=Y)
+        scroll_x.config(command=self.student_table.xview)
+        scroll_y.config(command=self.student_table.yview)
 
-        
+     # Define column headers
+        self.student_table.heading("dep", text="Department")
+        self.student_table.heading("year", text="Year")
+        self.student_table.heading("sem", text="Semester")
+        self.student_table.heading("id", text="ID")
+        self.student_table.heading("name", text="Name")
+        self.student_table.heading("rollno", text="Roll No")
+        self.student_table.heading("gender", text="Gender")
+        self.student_table.heading("email", text="Email")
+        self.student_table.heading("phone", text="Phone")
+        self.student_table.heading("photo", text="Photo")
+
+    
+    # Set column widths
+        self.student_table.column("dep", width=120)
+        self.student_table.column("course", width=120)
+        self.student_table.column("year", width=80)
+        self.student_table.column("sem", width=100)
+        self.student_table.column("id", width=100)
+        self.student_table.column("name", width=150)
+        self.student_table.column("rollno", width=100)
+        self.student_table.column("gender", width=80)
+        self.student_table.column("email", width=180)
+        self.student_table.column("phone", width=120)
+        self.student_table.column("photo", width=100)
 
 
+        # Pack Treeview to ensure it fits correctly with the scrollbars
+        self.student_table.pack(fill=BOTH, expand=True)
+
+
+        # Add sample data to ensure the scrollbars are visible
+        for i in range(30):  # Add enough rows to require scrolling
+            self.student_table.insert("", "end", values=("Dept"+str(i),"Year"+str(i), "Sem"+str(i), "ID"+str(i), "Name"+str(i), "Roll"+str(i), "Gender"+str(i), "Email"+str(i), "Phone"+str(i), "Photo"+str(i)))
 
 
 
