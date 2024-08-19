@@ -1,7 +1,10 @@
 
+
+
 from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk
+
 
 class Student:
     def __init__(self, root):         
@@ -276,8 +279,8 @@ class Student:
     #=========== table frame===========
 
 
-        table_frame=LabelFrame(Right_frame,bd=2,bg="white",relief=RIDGE)
-        table_frame.place(x=5, y=210, width=680,height=250)
+        table_frame=Frame(Right_frame,bd=2,bg="white",relief=RIDGE)
+        table_frame.place(x=5, y=210, width=670,height=350)
 
 
     #creating scroll bar
@@ -285,7 +288,7 @@ class Student:
         scroll_x=ttk.Scrollbar(table_frame,orient=HORIZONTAL)
         scroll_y=ttk.Scrollbar(table_frame,orient=VERTICAL)
 
-        self.student_table=ttk.Treeview(table_frame,column=("dep","course","year","sem","id","name","rollno","gender","email","phone","photo"),xscrollcommand=scroll_x.set,yscrollcommand=scroll_y.set)
+        self.student_table=ttk.Treeview(table_frame,column=("dep","sem","id","name","rollno","gender","email","phone","teacher","teacher_subject","photo"),xscrollcommand=scroll_x.set,yscrollcommand=scroll_y.set)
 
         scroll_x.pack(side=BOTTOM,fill=X)
         scroll_y.pack(side=RIGHT,fill=Y)
@@ -294,7 +297,6 @@ class Student:
 
      # Define column headers
         self.student_table.heading("dep", text="Department")
-        self.student_table.heading("year", text="Year")
         self.student_table.heading("sem", text="Semester")
         self.student_table.heading("id", text="ID")
         self.student_table.heading("name", text="Name")
@@ -302,32 +304,30 @@ class Student:
         self.student_table.heading("gender", text="Gender")
         self.student_table.heading("email", text="Email")
         self.student_table.heading("phone", text="Phone")
+        self.student_table.heading("teacher", text="Teacher Name")
+        self.student_table.heading("teacher_subject", text="Teacher's Subject Name")
         self.student_table.heading("photo", text="Photo")
-
+        self.student_table["show"]="headings"
     
     # Set column widths
-        self.student_table.column("dep", width=120)
-        self.student_table.column("course", width=120)
-        self.student_table.column("year", width=80)
+        self.student_table.column("dep", width=100)
         self.student_table.column("sem", width=100)
         self.student_table.column("id", width=100)
-        self.student_table.column("name", width=150)
+        self.student_table.column("name", width=100)
         self.student_table.column("rollno", width=100)
-        self.student_table.column("gender", width=80)
-        self.student_table.column("email", width=180)
-        self.student_table.column("phone", width=120)
-        self.student_table.column("photo", width=100)
+        self.student_table.column("gender", width=100)
+        self.student_table.column("email", width=100)
+        self.student_table.column("phone", width=100)
+        self.student_table.column("teacher", width=100)
+        self.student_table.column("teacher_subject", width=100)
+        self.student_table.column("photo", width=150)
 
 
-        # Pack Treeview to ensure it fits correctly with the scrollbars
-        self.student_table.pack(fill=BOTH, expand=True)
+    # Pack Treeview to ensure it fits correctly with the scrollbars
+        self.student_table.pack(fill=BOTH, expand=1)
 
 
-        # Add sample data to ensure the scrollbars are visible
-        for i in range(30):  # Add enough rows to require scrolling
-            self.student_table.insert("", "end", values=("Dept"+str(i),"Year"+str(i), "Sem"+str(i), "ID"+str(i), "Name"+str(i), "Roll"+str(i), "Gender"+str(i), "Email"+str(i), "Phone"+str(i), "Photo"+str(i)))
-
-
+        
 
 
 
