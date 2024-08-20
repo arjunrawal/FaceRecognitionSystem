@@ -220,12 +220,12 @@ class Student:
 
     #radio button
         self.var_radio1=StringVar()
-        radiobtn1=ttk.Radiobutton(Class_Student_frame,variable=self.var_radio1,text="Take Photo Sample",value="yes")
-        radiobtn1.grid(row=6,padx=5,pady=0,column=0)
+        radiobtn1=ttk.Radiobutton(Class_Student_frame,variable=self.var_photo,text="Take Photo Sample",value="yes")
+        radiobtn1.grid(row=6,padx=5,pady=5,column=0)
 
         self.var_radio2=StringVar()
-        radiobtn2=ttk.Radiobutton(Class_Student_frame,variable=self.var_radio1,text="No Photo Sample",value="No")
-        radiobtn2.grid(row=6,padx=5,pady=0,column=1)
+        radiobtn2=ttk.Radiobutton(Class_Student_frame,variable=self.var_photo,text="No Photo Sample",value="No")
+        radiobtn2.grid(row=6,padx=5,pady=5,column=1)
 
 
     # Buttons Frame
@@ -335,8 +335,8 @@ class Student:
         self.student_table.heading("contact", text="Contact")
         self.student_table.heading("teacher", text="Teacher Name")
         self.student_table.heading("teacherSubject", text="Teacher's Subject Name")
-        self.student_table.heading("photo", text="Photo")
-        self.student_table["show"]="headings"
+        self.student_table.heading("photo", text="photo")
+        self.student_table["show"]="headings"   
     
     # Set column widths
         self.student_table.column("dep", width=100)
