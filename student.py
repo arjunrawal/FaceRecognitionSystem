@@ -356,6 +356,7 @@ class Student:
 
     # Pack Treeview to ensure it fits correctly with the scrollbars
         self.student_table.pack(fill=BOTH, expand=1)
+        self.student_table.bind("<ButtonRelease>",self.get_cursor)
         self.fetch_data()
 
 
@@ -412,7 +413,69 @@ class Student:
         conn.close()
 
 
+    #==============get cursor===============
+    def get_cursor(self,event=""):
+        cursor_focus=self.student_table.focus()
+        content=self.student_table.item(cursor_focus)
+        data=content["values"]
+        
+        self.var_dep.set(data[0]),
+        self.var_semester.set(data[1]),
+        self.var_id.set(data[2]),
+        self.var_name.set(data[3]),
+        self.var_rollno.set(data[4]),
+        self.var_dob.set(data[5]),
+        self.var_gender.set(data[6]),
+        self.var_address.set(data[7]),
+        self.var_email.set(data[8]),
+        self.var_contact.set(data[9]),
+        self.var_teacherName.set(data[10]),
+        self.var_teacherSuject.set(data[11]),
+        self.var_photo.set(data[12]),
+        self.var_radio1.set(data[13])
+        self.var_radio2.set(data[13])
+        
 
+    #=====update function=============
+    def Update_data(self):
+        if self.var_dep.get() == "Select Department" or self.var_name.get() == "" or self.var_id.get() == "":
+            messagebox.showerror("Error", "All fields are required", parent=self.root)
+        else:
+            try:
+                Update=messagebox.askyesno("Update","Do you want to Update?",parent=self.root)
+                if Update>0:
+                    conn = mysql.connector.connect(host="localhost", username="root", password="sql123", database="face_recognizer")
+                    my_cursor = conn.cursor()
+                    my_cursor.execute("update student set dep=%s,semester=%s,id=%s,name=%s,rollno=%s,dob=%s,gender=%s,address=%s,email=%s,contact=%s,teacherName=%s,teacherSubject=%s,photo=%s where id=%s",(
+                    
+                    self.var_dep.get(),
+                    self.var_semester.get(),
+                    self.var_name.get(),
+                    self.var_rollno.get(),
+                    self.var_dob.get(),
+                    self.var_gender.get(),
+                    self.var_address.get(),
+                    self.var_email.get(),
+                    self.var_contact.get(),
+                    self.var_teacherName.get(),
+                    self.var_teacherSuject.get(),
+                    self.var_photo.get(),
+                    self.var_id.get()
+                         ))
+
+
+
+                else:
+                    if  not Update:
+                        return
+                messagebox.showinfo("Success","Students details successfully update Completed",parent=self.root)        
+                conn.commit()
+                self.fetch_data()
+                conn.close()
+
+
+            except Exception as es:
+                messagebox.showerror("Error",f"Due To:{str(es)}",parent=self.root)
 
 
 
