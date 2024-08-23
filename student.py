@@ -237,13 +237,13 @@ class Student:
         save_btn = Button(btn_frame, command=self.add_data, text="Save",cursor="hand2", width=15, font=("times new roman", 13, "bold"), bg="green", fg="white")
         save_btn.grid(row=0, column=0, padx=5, pady=5)
        
-        update_btn = Button(btn_frame, text="Update",cursor="hand2", width=15, font=("times new roman", 13, "bold"), bg="yellow", fg="black")
+        update_btn = Button(btn_frame, text="Update",command=self.Update_data,cursor="hand2", width=15, font=("times new roman", 13, "bold"), bg="yellow", fg="black")
         update_btn.grid(row=0, column=1, padx=5, pady=5)
        
-        delete_btn = Button(btn_frame, text="Delete",cursor="hand2", width=15, font=("times new roman", 13, "bold"), bg="red", fg="white")
+        delete_btn = Button(btn_frame, text="Delete",command=self.delete_data,cursor="hand2", width=15, font=("times new roman", 13, "bold"), bg="red", fg="white")
         delete_btn.grid(row=0, column=2, padx=5, pady=5)
        
-        reset_btn = Button(btn_frame, text="Reset",cursor="hand2", width=15, font=("times new roman", 13, "bold"), bg="blue", fg="white")
+        reset_btn = Button(btn_frame, text="Reset",command=self.reset_data,cursor="hand2", width=15, font=("times new roman", 13, "bold"), bg="blue", fg="white")
         reset_btn.grid(row=0, column=3, padx=5, pady=5)
     
      # Row 2 Buttons
@@ -431,9 +431,8 @@ class Student:
         self.var_contact.set(data[9]),
         self.var_teacherName.set(data[10]),
         self.var_teacherSuject.set(data[11]),
-        self.var_photo.set(data[12]),
-        self.var_radio1.set(data[13])
-        self.var_radio2.set(data[13])
+        self.var_radio1.set(data[12])
+
         
 
     #=====update function=============
@@ -443,10 +442,10 @@ class Student:
         else:
             try:
                 Update=messagebox.askyesno("Update","Do you want to Update?",parent=self.root)
-                if Update>0:
+                if Update > 0:
                     conn = mysql.connector.connect(host="localhost", username="root", password="sql123", database="face_recognizer")
                     my_cursor = conn.cursor()
-                    my_cursor.execute("update student set dep=%s,semester=%s,id=%s,name=%s,rollno=%s,dob=%s,gender=%s,address=%s,email=%s,contact=%s,teacherName=%s,teacherSubject=%s,photo=%s where id=%s",(
+                    my_cursor.execute("update student set dep=%s,semester=%s,name=%s,rollno=%s,dob=%s,gender=%s,address=%s,email=%s,contact=%s,teacherName=%s,teacherSubject=%s,photo=%s where id=%s",(
                     
                     self.var_dep.get(),
                     self.var_semester.get(),
@@ -459,14 +458,14 @@ class Student:
                     self.var_contact.get(),
                     self.var_teacherName.get(),
                     self.var_teacherSuject.get(),
-                    self.var_photo.get(),
+                    self.var_radio1.get(),
                     self.var_id.get()
                          ))
 
 
 
                 else:
-                    if  not Update:
+                    if not Update:
                         return
                 messagebox.showinfo("Success","Students details successfully update Completed",parent=self.root)        
                 conn.commit()
@@ -479,12 +478,49 @@ class Student:
 
 
 
+#==========delete function========
+    def delete_data(self):
+        if self.var_id.get()=="":
+            messagebox.showerror("Error","Student id must be required",parent.root)
+        else:
+            try:
+                delete=messagebox.askyesno("Student Delete Page","Do you want to delete this student ",parent=self.root)
+                if delete>0:
+                    conn = mysql.connector.connect(host="localhost", username="root", password="sql123", database="face_recognizer")
+                    my_cursor = conn.cursor()
+                    sql="delete from student where id=%s"
+                    val=(self.var_id.get(),)
+                    my_cursor.execute(sql,val)
+                else:
+                    if not delete:
+                        return
+                conn.commit()
+                self.fetch_data()
+                conn.close()
+                messagebox.showinfo("Delete","Successfully deleted student details",parent=self.root)
+
+            except Exception as es:
+                messagebox.showerror("Error",f"Due To:{str(es)}",parent=self.root)
+            
 
 
-
-
-
-
+    #============reset function========
+    def reset_data(self):
+        self.var_dep.set("Selecct Department")
+        self.var_semester.set("Select Semester")
+        self.var_id.set("")
+        self.var_name.set("")
+        self.var_rollno.set("")
+        self.var_dob.set("")
+        self.var_gender.set("Male")
+        self.var_address.set("")
+        self.var_email.set("")
+        self.var_contact.set("")
+        self.var_teacherName.set("")
+        self.var_teacherSuject.set("")
+        self.var_photo.set("")
+        self.var_radio1.set("")
+    
 
 
 
