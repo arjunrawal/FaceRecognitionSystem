@@ -4,6 +4,7 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 from tkinter import messagebox
 import mysql.connector
+import cv2
 
 
 class Student:
@@ -520,7 +521,45 @@ class Student:
         self.var_teacherSuject.set("")
         self.var_photo.set("")
         self.var_radio1.set("")
-    
+
+    #===========generate data set and take photo sample=======
+
+    def generate_dataset(self):
+        if self.var_dep.get() == "Select Department" or self.var_name.get() == "" or self.var_id.get() == "":
+            messagebox.showerror("Error", "All fields are required", parent=self.root)
+        else:
+            try:
+                conn = mysql.connector.connect(host="localhost", username="root", password="sql123", database="face_recognizer")
+                my_cursor = conn.cursor()
+                my_cursor.execute("Select * from student")
+                myresult=my_cursor.fetchall()
+                id=0
+                for x in myresult:
+                    id+=1
+                my_cursor.execute("update student set dep=%s,semester=%s,name=%s,rollno=%s,dob=%s,gender=%s,address=%s,email=%s,contact=%s,teacherName=%s,teacherSubject=%s,photo=%s where id=%s",(
+                    
+                    self.var_dep.get(),
+                    self.var_semester.get(),
+                    self.var_name.get(),
+                    self.var_rollno.get(),
+                    self.var_dob.get(),
+                    self.var_gender.get(),
+                    self.var_address.get(),
+                    self.var_email.get(),
+                    self.var_contact.get(),
+                    self.var_teacherName.get(),
+                    self.var_teacherSuject.get(),
+                    self.var_radio1.get(),
+                    self.var_id.get()
+                         ))
+                conn.commit()
+                self.fetch_data()
+                self.reset_data()
+                conn.close()
+
+
+
+
 
 
 
