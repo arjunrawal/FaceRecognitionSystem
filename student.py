@@ -248,7 +248,7 @@ class Student:
         reset_btn.grid(row=0, column=3, padx=5, pady=5)
     
      # Row 2 Buttons
-        take_photo_btn = Button(btn_frame,command==self.generate_dataset,text="Take Photo Sample",cursor="hand2", width=20, font=("times new roman", 13, "bold"), bg="blue", fg="white")
+        take_photo_btn = Button(btn_frame,command=self.generate_dataset,text="Take Photo Sample",cursor="hand2", width=20, font=("times new roman", 13, "bold"), bg="blue", fg="white")
         take_photo_btn.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
        
         update_photo_btn = Button(btn_frame, text="Update Photo Sample",cursor="hand2", width=20, font=("times new roman", 13, "bold"), bg="blue", fg="white")
