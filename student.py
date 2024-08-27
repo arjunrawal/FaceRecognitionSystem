@@ -420,6 +420,7 @@ class Student:
         content=self.student_table.item(cursor_focus)
         data=content["values"]
         
+    
         self.var_dep.set(data[0]),
         self.var_semester.set(data[1]),
         self.var_id.set(data[2]),
