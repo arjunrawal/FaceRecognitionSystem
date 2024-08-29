@@ -551,11 +551,14 @@ class Student:
                     self.var_teacherName.get(),
                     self.var_teacherSuject.get(),
                     self.var_radio1.get(),
-                    self.var_id.get()
-                         ))
+                    self.var_id.get()==id+1
+                        ))
                 conn.commit()
                 self.fetch_data()
                 self.reset_data()
+            except Exception as e:
+                messagebox.showerror("Error",f"Due to: {str(e)}", parent=self.root)
+            finally:
                 conn.close()
 
 
@@ -569,7 +572,7 @@ class Student:
                     #scaling factor =1.3
                     #minimum Neighbor=5
 
-                    for(x,y,w,y) in faces:
+                    for(x,y,w,h) in faces:
                         face_cropped=img[y:y+h,x:x+w]
                         return face_cropped
                     
@@ -579,21 +582,18 @@ class Student:
                     ret,my_frame=cap.read()
                     if face_cropped(my_frame) is not None:
                         img_id+=1
-                    face=cv2.resize(face_cropped(my_frame),(450,450))
-                    face=cv2.cvtColor(face,cv2.COLOR_BGR2GRAY)
-                    file_name_path="data/user."+str(id)+"."+str(img_id)+".jpg"
-                    cv2.imwrite(file_name_path)
-                    cv2.putText(face,str(img_id),cv2.FONT_HERSHEY_COMPLEX,2,(0,255,0),2)
-                    cv2.imshow("Crooped Face",face)
+                        face=cv2.resize(face_cropped(my_frame),(450,450))
+                        face=cv2.cvtColor(face,cv2.COLOR_BGR2GRAY)
+                        file_name_path="data/user."+str(id)+"."+str(img_id)+".jpg"
+                        cv2.imwrite(file_name_path,face)
+                        cv2.putText(face,str(img_id),(50,50),cv2.FONT_HERSHEY_COMPLEX,2,(0,255,0),2)
+                        cv2.imshow("Crooped Face",face)
 
                     if cv2.waitKey(1)==13 or int(img_id)==100:
                         break
                 cap.release()
                 cv2.destroyAllWindows()
                 messagebox.showinfo("Result","Generating data sets completed !!!!!")
-
-            except EXCEPTION as es:
-                messagebox.showerror("Error",f"Due To:{str(es)}",parent=self.root)
 
 
 
