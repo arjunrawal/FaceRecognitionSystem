@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk
 from student import Student
+import os
+from train import Train
 
 class Face_Recognition_System:
     def __init__(self, root):        
@@ -12,7 +14,7 @@ class Face_Recognition_System:
 
 
         # First image loading and resizing
-        img1 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Second.jpg")
+        img1 = Image.open(r"college_images\Second.jpg")
         img1 = img1.resize((500, 130), Image.LANCZOS)
         self.photoimg1 = ImageTk.PhotoImage(img1)
 
@@ -25,7 +27,7 @@ class Face_Recognition_System:
 
 
         # Second image loading and resizing
-        img2 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\First.jpg")
+        img2 = Image.open(r"college_images\First.jpg")
         img2= img2.resize((500, 130), Image.LANCZOS)
         self.photoimg2 = ImageTk.PhotoImage(img2)
 
@@ -37,7 +39,7 @@ class Face_Recognition_System:
 
 
         # Third image loading and resizing
-        img3 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Second.jpg")
+        img3 = Image.open(r"college_images\Second.jpg")
         img3 = img3.resize((600, 130), Image.LANCZOS)
         self.photoimg3 = ImageTk.PhotoImage(img3)
 
@@ -49,7 +51,7 @@ class Face_Recognition_System:
 
 
         # Background image loading and resizing
-        img4 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Background.jpg")
+        img4 = Image.open(r"college_images\Background.jpg")
         img4 = img4.resize((1530, 710), Image.LANCZOS)
         self.photoimg4 = ImageTk.PhotoImage(img4)
 
@@ -66,7 +68,7 @@ class Face_Recognition_System:
 
 
         # Student button
-        img5 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Button1.jpg")
+        img5 = Image.open(r"college_images\Button1.jpg")
         img5 = img5.resize((220, 220), Image.LANCZOS)
         self.photoimg5 = ImageTk.PhotoImage(img5)
         
@@ -79,7 +81,7 @@ class Face_Recognition_System:
 
 
         # Detecting face button
-        img6 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Button2.jpg")
+        img6 = Image.open(r"college_images\Button2.jpg")
         img6 = img6.resize((220, 220), Image.LANCZOS)
         self.photoimg6 = ImageTk.PhotoImage(img6)
         
@@ -92,7 +94,7 @@ class Face_Recognition_System:
 
 
         # Attendance button
-        img7 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Button3.jpg")
+        img7 = Image.open(r"college_images\Button3.jpg")
         img7 = img7.resize((220, 220), Image.LANCZOS)
         self.photoimg7 = ImageTk.PhotoImage(img7)
         
@@ -106,7 +108,7 @@ class Face_Recognition_System:
 
 
         # Help Desk button
-        img8 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Button4.png")
+        img8 = Image.open(r"college_images\Button4.png")
         img8 = img8.resize((220, 220), Image.LANCZOS)
         self.photoimg8 = ImageTk.PhotoImage(img8)
         
@@ -119,33 +121,33 @@ class Face_Recognition_System:
 
 
         # Train Data button
-        img9 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Button5.png")
+        img9 = Image.open(r"college_images\Button5.png")
         img9 = img9.resize((220, 220), Image.LANCZOS)
         self.photoimg9 = ImageTk.PhotoImage(img9)
         
-        b1 = Button(bg_img, image=self.photoimg9, cursor="hand2")
+        b1 = Button(bg_img, image=self.photoimg9, cursor="hand2",command=self.train_data)
         b1.place(x=100, y=400, width=220, height=220)
 
-        b1_1 = Button(bg_img, text="Train Data", cursor="hand2", font=("Roboto", 15, "bold"), bg="blue", fg="white")
+        b1_1 = Button(bg_img, text="Train Data", cursor="hand2",command=self.train_data, font=("Roboto", 15, "bold"), bg="blue", fg="white")
         b1_1.place(x=100, y=600, width=220, height=40)
 
 
 
         # Photos button
-        img10 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Button6.jpg")
+        img10 = Image.open(r"college_images\Button6.jpg")
         img10 = img10.resize((220, 220), Image.LANCZOS)
         self.photoimg10 = ImageTk.PhotoImage(img10)
 
-        b1 = Button(bg_img, image=self.photoimg10, cursor="hand2")
+        b1 = Button(bg_img, image=self.photoimg10, cursor="hand2", command=self.open_img)
         b1.place(x=500, y=400, width=220, height=220)
 
-        b1_1 = Button(bg_img, text="Photos", cursor="hand2", font=("Roboto", 15, "bold"), bg="blue", fg="white")
+        b1_1 = Button(bg_img, text="Photos", cursor="hand2", command=self.open_img,font=("Roboto", 15, "bold"), bg="blue", fg="white")
         b1_1.place(x=500, y=600, width=220, height=40)
 
 
 
         # Developer button
-        img12 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Button7.jpg")
+        img12 = Image.open(r"college_images\Button7.jpg")
         img12 = img12.resize((220, 220), Image.LANCZOS)
         self.photoimg12 = ImageTk.PhotoImage(img12)
 
@@ -158,7 +160,7 @@ class Face_Recognition_System:
 
 
         # Exit button
-        img11 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Button8.jpg")
+        img11 = Image.open(r"college_images\Button8.jpg")  #no error without its path
         img11 = img11.resize((220, 220), Image.LANCZOS)
         self.photoimg11 = ImageTk.PhotoImage(img11)
 
@@ -168,12 +170,20 @@ class Face_Recognition_System:
         b1_1 = Button(bg_img, text="Exit", cursor="hand2", font=("Roboto", 15, "bold"), bg="blue", fg="white")
         b1_1.place(x=1200, y=600, width=220, height=40)
 
+    def open_img(self):
+        os.startfile("data")
 
+#=========functiom buttons=============
 
     # Function to open the student details window
     def student_details(self):
         self.new_window = Toplevel(self.root)
         self.app = Student(self.new_window)
+
+    # Function to open the student details window
+    def train_data(self):
+        self.new_window = Toplevel(self.root)
+        self.app = Train(self.new_window)
 
 
 
