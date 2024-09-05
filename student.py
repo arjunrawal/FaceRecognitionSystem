@@ -38,7 +38,7 @@ class Student:
 
 
     # first Loading and resizing the image
-        img1 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Student1.jpg")
+        img1 = Image.open(r"college_images\Student1.jpg")
         img1 = img1.resize((500, 130), Image.LANCZOS)
         self.photoimg1 = ImageTk.PhotoImage(img1)
 
@@ -49,7 +49,7 @@ class Student:
         
 
     # second Loading and resizing the image
-        img2 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Student1.jpg")
+        img2 = Image.open(r"college_images\Student1.jpg")
         img2= img2.resize((500, 130), Image.LANCZOS)
         self.photoimg2 = ImageTk.PhotoImage(img2)
 
@@ -60,7 +60,7 @@ class Student:
         
 
      #third Loading and resizing the image
-        img3 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Student1.jpg")
+        img3 = Image.open(r"college_images\Student1.jpg")
         img3 = img3.resize((600, 130), Image.LANCZOS)
         self.photoimg3 = ImageTk.PhotoImage(img3)
 
@@ -71,7 +71,7 @@ class Student:
 
 
     #background Loading and resizing the image
-        img4 = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Background.jpg")
+        img4 = Image.open(r"college_images\Background.jpg")
         img4 = img4.resize((1530, 710), Image.LANCZOS)
         self.photoimg4 = ImageTk.PhotoImage(img4)
 
@@ -95,7 +95,7 @@ class Student:
 
 
      #loading and resizing the image in left label
-        img_left = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Student4.jpg")
+        img_left = Image.open(r"college_images\Student4.jpg")
         img_left = img_left.resize((750, 130), Image.LANCZOS)
         self.photoimg_left = ImageTk.PhotoImage(img_left)
 
@@ -269,7 +269,7 @@ class Student:
 
         
      #loading and resizing the image of right frame
-        img_Right = Image.open(r"C:\Users\aaaar\Desktop\FaceRecognitionSystem\college_images\Right1.jpg")
+        img_Right = Image.open(r"college_images\Right1.jpg")
         img_Right = img_Right.resize((750, 130), Image.LANCZOS)
         self.photoimg_Right = ImageTk.PhotoImage(img_Right)
 
@@ -569,8 +569,8 @@ class Student:
 
                 def face_cropped(img):
                     gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-                    faces=face_classifier.detectMultiScale(gray,1.3,5)
-                    #scaling factor =1.3
+                    faces=face_classifier.detectMultiScale(gray,1.1,5)
+                    #scaling factor =1.1
                     #minimum Neighbor=5
 
                     for(x,y,w,h) in faces:
